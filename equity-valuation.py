@@ -56,7 +56,7 @@ class MainFrame(ttk.Frame):
         self.rrf.grid(column=2,row=4)
 
 
-
+#revise below and add oher variables
 
         self.label1 = tk.Label(text="default text")
         self.label1.grid(column=3,row=0)
