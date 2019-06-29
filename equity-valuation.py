@@ -10,15 +10,23 @@ from tkinter import *
 
 #from https://www.sololearn.com/Discuss/501434/need-example-for-get-values-from-textbox-tkinter
 
+def new_window():
+        root=Tk()
+        root.title("Choose One:")
+        root.geometry("500x500")
+        Rock=Label(root, text = 'temp').pack(side=LEFT)
+        Button(root, text='Quit',command=quit, fg='red').pack(side=LEFT)
+        root.mainloop()
+
+
+
 class MainFrame(ttk.Frame):
 
     def __init__(self,master=None):
         super().__init__(master)
         self.grid()
         self.create_widgets()
-
-        
-        
+    
     def create_widgets(self):
                        
         self.pps_text = ttk.Label(text='Price per Share: ')
@@ -77,49 +85,57 @@ class MainFrame(ttk.Frame):
         self.label_shares_outstanding = tk.Label(text="default text")
         self.label_shares_outstanding.grid(column=3,row=1)
 
-        self.button1 = ttk.Button(text='confirm inputs', command=self.write)
+        self.button1 = ttk.Button(text='Confirm Inputs', command=self.write)
+        #self.button1 = ttk.Button(text='Confirm Inputs', command=lambda:[self.write, new_window()])
         self.button1.grid(column=1,row=9)
 
+        self.button2 = ttk.Button(text='Calculate', command= new_window)
+        self.button2.grid(column=2,row=9)
+
     def write(self):
-        #self.label_pps["text"]=self.pps.get()
-        #self.label_shares_outstanding["text"]=self.shares_outstanding.get()
-        pps = self.pps.get()
-        shares_outstanding = self.shares_outstanding.get()
-        rrf = self.rrf.get()
-        beta = self.beta.get()
-        mrp = self.mrp.get()
-        fcfe = self.fcfe.get()
-        five_year_gr = self.five_year_gr.get()
-        terminal_gr = self.terminal_gr.get()
-        
-        
+        self.label_pps["text"]=self.pps.get()
+        self.label_shares_outstanding["text"]=self.shares_outstanding.get()
+        pps = float(self.pps.get())
+        shares_outstanding = float(self.shares_outstanding.get())
+        rrf = float(self.rrf.get())
+        beta = float(self.beta.get())
+        mrp = float(self.mrp.get())
+        fcfe = float(self.fcfe.get())
+        five_year_gr =float(self.five_year_gr.get())
+        terminal_gr = float(self.terminal_gr.get())
+        #Calculations
+        cost_of_equity = rrf + beta * mrp
 
+        fcfe_y1 = (fcfe*(1+five_year_gr))/((1+cost_of_equity)**1)
+        fcfe_y2 = (fcfe*(1+five_year_gr)**2)/((1+cost_of_equity)**2)
+        fcfe_y3 = (fcfe*(1+five_year_gr)**3)/((1+cost_of_equity)**3)
+        fcfe_y4 = (fcfe*(1+five_year_gr)**4)/((1+cost_of_equity)**4)
+        fcfe_y5 = (fcfe*(1+five_year_gr)**5)/((1+cost_of_equity)**5)
 
+        five_year_value = fcfe_y1 + fcfe_y2 + fcfe_y3 + fcfe_y4 + fcfe_y5
+        terminal_value = (fcfe*(1+five_year_gr)**5)/((cost_of_equity-terminal_gr)*(1+cost_of_equity)**5)
+        equity_value = five_year_value + terminal_value
+        value_per_share = equity_value / shares_outstanding
+        premium_discount = pps / value_per_share
+
+        #to test outputs only
+        #print(terminal_value) 
+        #print(equity_value)
+        #print(value_per_share)
+        #print(premium_discount)
+
+  
+    
 if __name__ == "__main__":
     root = tk.Tk()
     app = MainFrame(master=root)
     app.mainloop()
 
 
-#Calculations
-cost_of_equity = rrf + beta * mrp
-
-fcfe_y1 = (fcfe*(1+five_year_gr))/((1+cost_of_equity)**1)
-fcfe_y2 = (fcfe*(1+five_year_gr)**2)/((1+cost_of_equity)**2)
-fcfe_y3 = (fcfe*(1+five_year_gr)**3)/((1+cost_of_equity)**3)
-fcfe_y4 = (fcfe*(1+five_year_gr)**4)/((1+cost_of_equity)**4)
-fcfe_y5 = (fcfe*(1+five_year_gr)**5)/((1+cost_of_equity)**5)
-
-five_year_value = fcfe_y1 + fcfe_y2 + fcfe_y3 + fcfe_y4 + fcfe_y5
-
-terminal_value = (fcfe*(1+five_year_gr)**5)/((cost_of_equity-terminal_gr)*(1+cost_of_equity)**5)
-
-equity_value = five_year_value + terminal_value
-
-value_per_share = equity_value / shares_outstanding
-
-premium_discount = pps / value_per_share
-
-
 #Output GUI
 
+        
+print(terminal_value)
+print(equity_value)
+print(value_per_share)
+print(premium_discount)
