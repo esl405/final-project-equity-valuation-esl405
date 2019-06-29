@@ -55,7 +55,29 @@ class MainFrame(ttk.Frame):
         self.rrf = tk.Entry()
         self.rrf.grid(column=2,row=4)
 
+        self.beta_text = ttk.Label(text='Beta: ')  
+        self.beta_text.grid(column=1,row=5)
 
+        self.beta = tk.Entry()
+        self.beta.grid(column=2,row=5)
+
+        self.mrp_text = ttk.Label(text='Current Equity Risk Premium: ')
+        self.mrp_text.grid(column=1,row=6)
+
+        self.mrp = tk.Entry()
+        self.mrp.grid(column=2,row=6)
+
+        self.five_year_gr_text = ttk.Label(text='Five Year Growth Rate (%): ')  
+        self.five_year_gr_text.grid(column=1,row=7)
+
+        self.five_year_gr = tk.Entry()
+        self.five_year_gr.grid(column=2,row=7)
+
+        self.terminal_gr_text = ttk.Label(text='Terminal Growth Rate (%): ')
+        self.terminal_gr_text.grid(column=1,row=8)
+
+        self.terminal_gr = tk.Entry()
+        self.temrinal_gr.grid(column=2,row=8)
 #revise below and add oher variables
 
         self.label1 = tk.Label(text="default text")
