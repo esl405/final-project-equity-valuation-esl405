@@ -4,18 +4,9 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
-#can import finviz
+
 
 #User Input and Input GUI
-#debt_text=Label(root, text='Market Value or Book Value of Debt ($M): ').grid(row=2, column=1)
-#debt=Entry(root).grid(row=2, column=2)
-#risk_free_rate_text=Label(root, text='Shares Outstanding: ').grid(row=3, column=1)
-#risk_free_rate=Entry(root).grid(row=3, column=2)
-#
-#
-#Button(root, text='Done',command=root.quit, fg='red').grid(row=10, column=2)
-#
-#root.mainloop()
 
 #from https://www.sololearn.com/Discuss/501434/need-example-for-get-values-from-textbox-tkinter
 
@@ -33,51 +24,50 @@ class MainFrame(ttk.Frame):
         self.pps_text = ttk.Label(text='Price per Share: ')
         self.pps_text.grid(column=1,row=0)
 
-
         self.pps = tk.Entry()
         self.pps.grid(column=2,row=0)
 
-        self.shares_outstanding_text = ttk.Label(text='Shares Outstanding: ')
+        self.shares_outstanding_text = ttk.Label(text='Shares Outstanding (Millions): ')
         self.shares_outstanding_text.grid(column=1,row=1)
 
         self.shares_outstanding = tk.Entry()
         self.shares_outstanding.grid(column=2,row=1)
 
-        self.debt_text = ttk.Label(text='Market or Book Value of Debt ($M): ')
-        self.debt_text.grid(column=1,row=3)
-
-        self.debt = tk.Entry()
-        self.debt.grid(column=2,row=3)
-
         self.rrf_text = ttk.Label(text='Risk Free Rate (%): ')
-        self.rrf_text.grid(column=1,row=4)
+        self.rrf_text.grid(column=1,row=2)
 
         self.rrf = tk.Entry()
-        self.rrf.grid(column=2,row=4)
+        self.rrf.grid(column=2,row=2)
 
         self.beta_text = ttk.Label(text='Beta: ')  
-        self.beta_text.grid(column=1,row=5)
+        self.beta_text.grid(column=1,row=3)
 
         self.beta = tk.Entry()
-        self.beta.grid(column=2,row=5)
+        self.beta.grid(column=2,row=3)
 
         self.mrp_text = ttk.Label(text='Current Equity Risk Premium: ')
-        self.mrp_text.grid(column=1,row=6)
+        self.mrp_text.grid(column=1,row=4)
 
         self.mrp = tk.Entry()
-        self.mrp.grid(column=2,row=6)
+        self.mrp.grid(column=2,row=4)
+
+        self.fcfe_text = ttk.Label(text='Initial Free Cash Flow to Equity: ')  
+        self.fcfe_text.grid(column=1,row=5)
+
+        self.fcfe = tk.Entry()
+        self.fcfe.grid(column=2,row=5)
 
         self.five_year_gr_text = ttk.Label(text='Five Year Growth Rate (%): ')  
-        self.five_year_gr_text.grid(column=1,row=7)
+        self.five_year_gr_text.grid(column=1,row=6)
 
         self.five_year_gr = tk.Entry()
-        self.five_year_gr.grid(column=2,row=7)
+        self.five_year_gr.grid(column=2,row=6)
 
         self.terminal_gr_text = ttk.Label(text='Terminal Growth Rate (%): ')
-        self.terminal_gr_text.grid(column=1,row=8)
+        self.terminal_gr_text.grid(column=1,row=7)
 
         self.terminal_gr = tk.Entry()
-        self.terminal_gr.grid(column=2,row=8)
+        self.terminal_gr.grid(column=2,row=7)
 #revise below and add oher variables
 
         self.label_pps = tk.Label(text="default text")
@@ -91,17 +81,18 @@ class MainFrame(ttk.Frame):
         self.button1.grid(column=1,row=9)
 
     def write(self):
-        self.label_pps["text"]=self.pps.get()
-        self.label_shares_outstanding["text"]=self.shares_outstanding.get()
-        debt = self.debt.get()
-        #self.label_debt["text"]=self.debt.get()
-        #self.label_rrf["text"]=self.rrf.get()
-        #self.label_beta["text"]=self.beta.get()
-        #self.label_mrp["text"]=self.mrp.get()
-        #self.label_five_year_gr["text"]=self.five_year_gr.get()
-        #self.label_terminal_gr["text"]=self.terminal_gr.get()
+        #self.label_pps["text"]=self.pps.get()
+        #self.label_shares_outstanding["text"]=self.shares_outstanding.get()
+        pps = self.pps.get()
+        shares_outstanding = self.shares_outstanding.get()
+        rrf = self.rrf.get()
+        beta = self.beta.get()
+        mrp = self.mrp.get()
+        fcfe = self.fcfe.get()
+        five_year_gr = self.five_year_gr.get()
+        terminal_gr = self.terminal_gr.get()
         
-        print(debt)
+        
 
 
 if __name__ == "__main__":
@@ -110,12 +101,23 @@ if __name__ == "__main__":
     app.mainloop()
 
 
-
-
-
-
-
 #Calculations
+cost_of_equity = rrf + beta * mrp
+
+fcfe_y1 = (fcfe*(1+five_year_gr))/((1+cost_of_equity)**1)
+fcfe_y2 = (fcfe*(1+five_year_gr)**2)/((1+cost_of_equity)**2)
+fcfe_y3 = (fcfe*(1+five_year_gr)**3)/((1+cost_of_equity)**3)
+fcfe_y4 = (fcfe*(1+five_year_gr)**4)/((1+cost_of_equity)**4)
+fcfe_y5 = (fcfe*(1+five_year_gr)**5)/((1+cost_of_equity)**5)
+
+five_year_value = fcfe_y1 + fcfe_y2 + fcfe_y3 + fcfe_y4 + fcfe_y5
+
+terminal_value = (fcfe*(1+five_year_gr)**5)/((cost_of_equity-terminal_gr)*(1+cost_of_equity)**5
+
+
+
+
+
 
 
 #Output GUI
