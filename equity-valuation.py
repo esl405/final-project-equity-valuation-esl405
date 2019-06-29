@@ -80,25 +80,30 @@ class MainFrame(ttk.Frame):
         self.terminal_gr.grid(column=2,row=8)
 #revise below and add oher variables
 
-        self.label1 = tk.Label(text="default text")
-        self.label1.grid(column=3,row=0)
+        self.label_pps = tk.Label(text="default text")
+        self.label_pps.grid(column=3,row=0)
+    
 
-        self.label2 = tk.Label(text="default text")
-        self.label2.grid(column=3,row=1)
+        self.label_shares_outstanding = tk.Label(text="default text")
+        self.label_shares_outstanding.grid(column=3,row=1)
 
         self.button1 = ttk.Button(text='confirm inputs', command=self.write)
         self.button1.grid(column=1,row=9)
 
     def write(self):
-        self.label1["text"]=self.pps.get()
-        self.label2["text"]=self.shares_outstanding.get()
-        self.label2["text"]=self.debt.get()
-        self.label2["text"]=self.rrf.get()
-        self.label2["text"]=self.beta.get()
-        self.label2["text"]=self.mrp.get()
-        self.label2["text"]=self.five_year_gr.get()
-        self.label2["text"]=self.terminal_gr.get()
+        self.label_pps["text"]=self.pps.get()
+        self.label_shares_outstanding["text"]=self.shares_outstanding.get()
+        debt = self.debt.get()
+        #self.label_debt["text"]=self.debt.get()
+        #self.label_rrf["text"]=self.rrf.get()
+        #self.label_beta["text"]=self.beta.get()
+        #self.label_mrp["text"]=self.mrp.get()
+        #self.label_five_year_gr["text"]=self.five_year_gr.get()
+        #self.label_terminal_gr["text"]=self.terminal_gr.get()
         
+        print(debt)
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = MainFrame(master=root)
