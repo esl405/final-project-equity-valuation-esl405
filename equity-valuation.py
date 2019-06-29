@@ -77,13 +77,14 @@ class MainFrame(ttk.Frame):
         self.terminal_gr = tk.Entry()
         self.terminal_gr.grid(column=2,row=7)
 #revise below and add oher variables
-
-        self.label_pps = tk.Label(text="default text")
-        self.label_pps.grid(column=3,row=0)
-    
-
+        self.header_text = ttk.Label(text='Confirmation Inputs: ')  
+        self.header_text.grid(column=3,row=0)
+        
         self.label_shares_outstanding = tk.Label(text="default text")
         self.label_shares_outstanding.grid(column=3,row=1)
+
+        self.label_rrf = tk.Label(text="default text")
+        self.label_rrf.grid(column=3,row=2)
 
         self.button1 = ttk.Button(text='Confirm Inputs', command=self.write)
         #self.button1 = ttk.Button(text='Confirm Inputs', command=lambda:[self.write, new_window()])
@@ -93,8 +94,8 @@ class MainFrame(ttk.Frame):
         self.button2.grid(column=2,row=9)
 
     def write(self):
-        self.label_pps["text"]=self.pps.get()
         self.label_shares_outstanding["text"]=self.shares_outstanding.get()
+        self.label_rrf["text"]=self.rrf.get()
         pps = float(self.pps.get())
         shares_outstanding = float(self.shares_outstanding.get())
         rrf = float(self.rrf.get())
