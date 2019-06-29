@@ -77,7 +77,7 @@ class MainFrame(ttk.Frame):
         self.terminal_gr_text.grid(column=1,row=8)
 
         self.terminal_gr = tk.Entry()
-        self.temrinal_gr.grid(column=2,row=8)
+        self.terminal_gr.grid(column=2,row=8)
 #revise below and add oher variables
 
         self.label1 = tk.Label(text="default text")
@@ -87,11 +87,17 @@ class MainFrame(ttk.Frame):
         self.label2.grid(column=3,row=1)
 
         self.button1 = ttk.Button(text='confirm inputs', command=self.write)
-        self.button1.grid(column=1,row=4)
+        self.button1.grid(column=1,row=9)
 
     def write(self):
         self.label1["text"]=self.pps.get()
         self.label2["text"]=self.shares_outstanding.get()
+        self.label2["text"]=self.debt.get()
+        self.label2["text"]=self.rrf.get()
+        self.label2["text"]=self.beta.get()
+        self.label2["text"]=self.mrp.get()
+        self.label2["text"]=self.five_year_gr.get()
+        self.label2["text"]=self.terminal_gr.get()
         
 if __name__ == "__main__":
     root = tk.Tk()
