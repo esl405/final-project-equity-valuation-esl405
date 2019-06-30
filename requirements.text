@@ -1,0 +1,6 @@
+#Requirements
+python-dotenv
+pandas
+os
+tkinter
+
