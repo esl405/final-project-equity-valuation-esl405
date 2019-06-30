@@ -10,13 +10,7 @@ from tkinter import *
 
 #from https://www.sololearn.com/Discuss/501434/need-example-for-get-values-from-textbox-tkinter
 
-def new_window():
-        root=Tk()
-        root.title("Choose One:")
-        root.geometry("500x500")
-        Rock=Label(root, text = 'temp').pack(side=LEFT)
-        Button(root, text='Quit',command=quit, fg='red').pack(side=LEFT)
-        root.mainloop()
+
 
 
 
@@ -65,18 +59,19 @@ class MainFrame(ttk.Frame):
         self.fcfe = tk.Entry()
         self.fcfe.grid(column=2,row=5)
 
-        self.five_year_gr_text = ttk.Label(text='Five Year Growth Rate (%): ')  
+        self.five_year_gr_text = ttk.Label(text='Five Year Growth Rate (As Decimal): ')  
         self.five_year_gr_text.grid(column=1,row=6)
 
         self.five_year_gr = tk.Entry()
         self.five_year_gr.grid(column=2,row=6)
 
-        self.terminal_gr_text = ttk.Label(text='Terminal Growth Rate (%): ')
+        self.terminal_gr_text = ttk.Label(text='Terminal Growth Rate (As Decimal): ')
         self.terminal_gr_text.grid(column=1,row=7)
 
         self.terminal_gr = tk.Entry()
         self.terminal_gr.grid(column=2,row=7)
-#revise below and add oher variables
+
+#added confirmation test
         self.header_text = ttk.Label(text='Confirmation Inputs: ')  
         self.header_text.grid(column=3,row=0)
         
@@ -87,10 +82,9 @@ class MainFrame(ttk.Frame):
         self.label_rrf.grid(column=3,row=2)
 
         self.button1 = ttk.Button(text='Confirm Inputs', command=self.write)
-        #self.button1 = ttk.Button(text='Confirm Inputs', command=lambda:[self.write, new_window()])
         self.button1.grid(column=1,row=9)
 
-        self.button2 = ttk.Button(text='Calculate', command= new_window)
+        self.button2 = ttk.Button(text='Close Window', command= quit)
         self.button2.grid(column=2,row=9)
 
     def write(self):
@@ -119,24 +113,49 @@ class MainFrame(ttk.Frame):
         value_per_share = equity_value / shares_outstanding
         premium_discount = pps / value_per_share
 
+        five_year_value_USD= '${0:.2f}'.format(five_year_value)
+        terminal_value_USD= '${0:.2f}'.format(terminal_value)
+        equity_value_USD= '${0:.2f}'.format(equity_value)
+        value_per_share_USD= '${0:.2f}'.format(value_per_share)
+        premium_discount_short = '{0:.2f}'.format(premium_discount)
         #to test outputs only
         #print(terminal_value) 
         #print(equity_value)
         #print(value_per_share)
         #print(premium_discount)
+        
+        #Output GUI Window
+        root=Tk()
+        root.title("Equity Valulation: ")
+        root.geometry("300x200")
+        Label(root, text='Cost of Equity: ').grid(row=1, column=1)
+        Label(root, text=cost_of_equity).grid(row=1, column=2)
+        Label(root, text='Five Year Value ($M): ').grid(row=2, column=1)
+        Label(root, text=five_year_value_USD).grid(row=2, column=2)
+        Label(root, text='Terminal Value ($M): ').grid(row=3, column=1)
+        Label(root, text=terminal_value_USD).grid(row=3, column=2)
+        Label(root, text='NPV Equity Value ($M): ').grid(row=4, column=1)
+        Label(root, text=equity_value_USD).grid(row=4, column=2)
+        Label(root, text='PPS ($): ').grid(row=5, column=1)
+        Label(root, text=pps).grid(row=5, column=2)
+        Label(root, text='Value Per Share ($): ').grid(row=6, column=1)
+        Label(root, text=value_per_share_USD).grid(row=6, column=2)
+        Label(root, text='Premium/Discount: ').grid(row=7, column=1)
+        Label(root, text=premium_discount_short).grid(row=7, column=2)
+        Button(root, text='Quit',command=quit, fg='red').grid(row=8, column=1)
+        root.mainloop()
 
+    #def new_window():
+    #    root=Tk()
+    #    root.title("Equity Valulation: ")
+    #    root.geometry("500x500")
+    #    Label(root, text='Cost of Equity: ').grid(row=1, column=1)
+    #    Label(root, text=cost_of_equity).grid(row=1, column=2)
+    #    #Button(root, text='Quit',command=quit, fg='red').pack(side=LEFT)
+    #    root.mainloop()
   
     
 if __name__ == "__main__":
     root = tk.Tk()
     app = MainFrame(master=root)
     app.mainloop()
-
-
-#Output GUI
-
-        
-print(terminal_value)
-print(equity_value)
-print(value_per_share)
-print(premium_discount)
