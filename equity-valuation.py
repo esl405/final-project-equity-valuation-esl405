@@ -108,7 +108,7 @@ class MainFrame(ttk.Frame):
         fcfe_y5 = (fcfe*(1+five_year_gr)**5)/((1+cost_of_equity)**5)
 
         five_year_value = fcfe_y1 + fcfe_y2 + fcfe_y3 + fcfe_y4 + fcfe_y5
-        terminal_value = (fcfe*(1+five_year_gr)**5)/((cost_of_equity-terminal_gr)*(1+cost_of_equity)**5)
+        terminal_value = (fcfe*(1+terminal_gr)*(1+five_year_gr)**5)/((cost_of_equity-terminal_gr)*(1+cost_of_equity)**5)
         equity_value = five_year_value + terminal_value
         value_per_share = equity_value / shares_outstanding
         premium_discount = pps / value_per_share
