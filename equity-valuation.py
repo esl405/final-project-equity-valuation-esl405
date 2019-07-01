@@ -35,7 +35,7 @@ class MainFrame(ttk.Frame):
         self.shares_outstanding = tk.Entry()
         self.shares_outstanding.grid(column=2,row=1)
 
-        self.rrf_text = ttk.Label(text='Risk Free Rate (%): ')
+        self.rrf_text = ttk.Label(text='Risk Free Rate (As Decimal): ')
         self.rrf_text.grid(column=1,row=2)
 
         self.rrf = tk.Entry()
