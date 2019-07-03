@@ -144,12 +144,15 @@ class MainFrame(ttk.Frame):
         Label(root, text=value_per_share_USD).grid(row=6, column=2)
         Label(root, text='Premium/Discount: ').grid(row=7, column=1)
         Label(root, text=premium_discount_short).grid(row=7, column=2)
-        if premium_discount > 1.0:
+        if premium_discount > 1.2:
             Label(root, text='Conclusion: ').grid(row=8, column=1)
             Label(root, text='OVERVALUED', fg='red').grid(row=8, column=2)
-        else:
+        elif premium_discount < 0.8:
             Label(root, text='Conclusion: ').grid(row=8, column=1)
             Label(root, text='UNDERVALUED', fg='green').grid(row=8, column=2)
+        else:
+            Label(root, text='Conclusion: ').grid(row=8, column=1)
+            Label(root, text='FAIRLY VAlUED').grid(row=8, column=2)
         Button(root, text='Quit',command=quit, fg='red').grid(row=9, column=1)
         root.mainloop()
 

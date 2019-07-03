@@ -71,7 +71,9 @@ Once the outputs are noted, click "Quit" to close all windows.
 If any mistakes were made or any assumptions were changed, the new values may be input into the first window. When "Confirm Inputs" is clicked, a new window with the new calculated values will be opened. There is no need to re-execute the program from the command prompt. 
 
 ## Recommendation
-If the stock is overvalued, the "premium/discount" will be over 1.0; otherwise, will be less than 1.0
+If the stock is overvalued, the "premium/discount" will be over 1.0; otherwise, will be less than 1.0 
+
+The recommendation will also be displayed in the output window. 
 
 ## [License](/LICENSE.md)
 
