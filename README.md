@@ -1,9 +1,7 @@
 # final-project-equity-valuation-esl405
-Final Project for ESL405
+Final Project for ESL405 (Version 1.0)
 
 This is based on the README.md from Professor Rossetti (https://github.com/prof-rossetti/nyu-info-2335-201905/tree/master/projects/robo-advisor)
-
-Issues requests to the [AlphaVantage Stock Market API](https://www.alphavantage.co/) in order to provide automated stock or cryptocurrency trading recommendations.
 
 ## Prerequisites
 
@@ -35,13 +33,12 @@ pip install tkinter
 ```
 ## Setup
 
-## Usage
-
 Run the recommendation script:
 
 ```py
 python app/equity-valuation.py
 ```
+## Usage
 
 When command input window appearrs, please input the following values as real numbers only without any symbols:
 
@@ -77,3 +74,9 @@ If any mistakes were made or any assumptions were changed, the new values may be
 If the stock is overvalued, the "premium/discount" will be over 1.0; otherwise, will be less than 1.0
 
 ## [License](/LICENSE.md)
+
+## Comments
+
+Recommendations and requests for additional features for Version 2.0 can be submitted to esl405@stern.nyu.edu.
+
+For version 2, the current improvements to be added are a sensitively analysis window and and ability to recognize and compute output values regardless of decimal or percentage format. 
