@@ -63,15 +63,15 @@ Value per Share / Price per Share
 ```
 therefore,
 
-a value > 1.0 indicates overvaluation
-a value < 1.0 indicated undervaluation
+a value > 1.2 indicates overvaluation
+a value < 0.8 indicated undervaluation
 
 Once the outputs are noted, click "Quit" to close all windows. 
 
 If any mistakes were made or any assumptions were changed, the new values may be input into the first window. When "Confirm Inputs" is clicked, a new window with the new calculated values will be opened. There is no need to re-execute the program from the command prompt. 
 
 ## Recommendation
-If the stock is overvalued, the "premium/discount" will be over 1.0; otherwise, will be less than 1.0 
+If the stock is overvalued, the "premium/discount" will be over 1.2; otherwise, will be less than 0.8. Anything in between will be considered fairly valued. 
 
 The recommendation will also be displayed in the output window. 
 
