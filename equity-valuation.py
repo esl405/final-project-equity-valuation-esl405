@@ -118,6 +118,7 @@ class MainFrame(ttk.Frame):
         terminal_value_USD= '${0:.2f}'.format(terminal_value)
         equity_value_USD= '${0:.2f}'.format(equity_value)
         value_per_share_USD= '${0:.2f}'.format(value_per_share)
+        pps_USD = '${0:.2f}'.format(pps)
         premium_discount_short = '{0:.2f}'.format(premium_discount)
         cost_of_equity_percent = '{0:.2f}%'.format(cost_of_equity_100)
         #to test outputs only
@@ -139,7 +140,7 @@ class MainFrame(ttk.Frame):
         Label(root, text='NPV Equity Value ($M): ').grid(row=4, column=1)
         Label(root, text=equity_value_USD).grid(row=4, column=2)
         Label(root, text='PPS ($): ').grid(row=5, column=1)
-        Label(root, text=pps).grid(row=5, column=2)
+        Label(root, text=pps_USD).grid(row=5, column=2)
         Label(root, text='Value Per Share ($): ').grid(row=6, column=1)
         Label(root, text=value_per_share_USD).grid(row=6, column=2)
         Label(root, text='Premium/Discount: ').grid(row=7, column=1)
