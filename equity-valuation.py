@@ -47,7 +47,7 @@ class MainFrame(ttk.Frame):
         self.beta = tk.Entry()
         self.beta.grid(column=2,row=3)
 
-        self.mrp_text = ttk.Label(text='Current Equity Risk Premium: ')
+        self.mrp_text = ttk.Label(text='Current Equity Risk Premium (As Decimal): ')
         self.mrp_text.grid(column=1,row=4)
 
         self.mrp = tk.Entry()
@@ -100,7 +100,8 @@ class MainFrame(ttk.Frame):
         terminal_gr = float(self.terminal_gr.get())
         #Calculations
         cost_of_equity = rrf + beta * mrp
-
+        cost_of_equity_100 = cost_of_equity*100
+        
         fcfe_y1 = (fcfe*(1+five_year_gr))/((1+cost_of_equity)**1)
         fcfe_y2 = (fcfe*(1+five_year_gr)**2)/((1+cost_of_equity)**2)
         fcfe_y3 = (fcfe*(1+five_year_gr)**3)/((1+cost_of_equity)**3)
@@ -118,6 +119,7 @@ class MainFrame(ttk.Frame):
         equity_value_USD= '${0:.2f}'.format(equity_value)
         value_per_share_USD= '${0:.2f}'.format(value_per_share)
         premium_discount_short = '{0:.2f}'.format(premium_discount)
+        cost_of_equity_percent = '{0:.2f}%'.format(cost_of_equity_100)
         #to test outputs only
         #print(terminal_value) 
         #print(equity_value)
@@ -126,10 +128,10 @@ class MainFrame(ttk.Frame):
         
         #Output GUI Window
         root=Tk()
-        root.title("Equity Valulation: ")
+        root.title("Equity Valuation: ")
         root.geometry("300x200")
         Label(root, text='Cost of Equity: ').grid(row=1, column=1)
-        Label(root, text=cost_of_equity).grid(row=1, column=2)
+        Label(root, text=cost_of_equity_percent).grid(row=1, column=2)
         Label(root, text='Five Year Value ($M): ').grid(row=2, column=1)
         Label(root, text=five_year_value_USD).grid(row=2, column=2)
         Label(root, text='Terminal Value ($M): ').grid(row=3, column=1)
