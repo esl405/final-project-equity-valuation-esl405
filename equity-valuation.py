@@ -22,7 +22,7 @@ class MainFrame(ttk.Frame):
         self.create_widgets()
     
     def create_widgets(self):
-                       
+                      
         self.pps_text = ttk.Label(text='Price per Share: ')
         self.pps_text.grid(column=1,row=0)
 
@@ -53,7 +53,7 @@ class MainFrame(ttk.Frame):
         self.mrp = tk.Entry()
         self.mrp.grid(column=2,row=4)
 
-        self.fcfe_text = ttk.Label(text='Initial Free Cash Flow to Equity: ')  
+        self.fcfe_text = ttk.Label(text='Initial Free Cash Flow to Equity ($ Millions): ')  
         self.fcfe_text.grid(column=1,row=5)
 
         self.fcfe = tk.Entry()
@@ -82,10 +82,10 @@ class MainFrame(ttk.Frame):
         self.label_rrf.grid(column=3,row=2)
 
         self.button1 = ttk.Button(text='Confirm Inputs', command=self.write)
-        self.button1.grid(column=1,row=9)
+        self.button1.grid(column=1,row=8)
 
         self.button2 = ttk.Button(text='Close Window', command= quit)
-        self.button2.grid(column=2,row=9)
+        self.button2.grid(column=2,row=8)
 
     def write(self):
         self.label_shares_outstanding["text"]=self.shares_outstanding.get()
